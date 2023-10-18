@@ -77,17 +77,36 @@ public class OceanExplorer extends Application {
             for (int y = 0; y < dim; y++) {
                 Rectangle rect = new Rectangle(x * scale, y * scale, scale, scale);
                 rect.setStroke(Color.BLACK);
-                if (islandMap[x][y] == 1) {
+
+                if (x == 0 && y == 0) {
+                    
                     island = new Image(getClass().getResource("/pirateIsland.PNG").toExternalForm(), 50, 50, true, true);
+                    ImagePattern imagePattern = new ImagePattern(island);
+                    rect.setFill(imagePattern);
+                } else if (x == 1 && y == 0) {
+                    
+                    island = new Image(getClass().getResource("/island.jpg").toExternalForm(), 50, 50, true, true);
+                    ImagePattern imagePattern = new ImagePattern(island);
+                    rect.setFill(imagePattern);
+                } else if (islandMap[x][y] == 1) {
+                    
+                    island = new Image(getClass().getResource("/pirateIsland.PNG").toExternalForm(), 50, 50, true, true);
+                    ImagePattern imagePattern = new ImagePattern(island);
+                    rect.setFill(imagePattern);
+                } else if (islandMap[x][y] == 2) {
+                   
+                    island = new Image(getClass().getResource("/island.jpg").toExternalForm(), 50, 50, true, true);
                     ImagePattern imagePattern = new ImagePattern(island);
                     rect.setFill(imagePattern);
                 } else {
                     rect.setFill(Color.PALETURQUOISE);
                 }
+
                 root.getChildren().add(rect);
             }
         }
     }
+
 
     public void loadShipImage() {
         shipImage = new Image(getClass().getResource("/ship.png").toExternalForm(), 50, 50, true, true);
